@@ -1,6 +1,5 @@
 import User from '../models/User.js';
 
-// Controller to handle Auth0-authenticated user login
 export const handleAuth0Login = async (req, res) => {
   try {
     const { sub, name, email, picture } = req.user;
@@ -9,10 +8,10 @@ export const handleAuth0Login = async (req, res) => {
       return res.status(400).json({ message: 'Invalid user info from Auth0' });
     }
 
-    // Check if user exists
+
     let user = await User.findOne({ auth0Id: sub });
 
-    // If not, create the user
+
     if (!user) {
       user = new User({
         auth0Id: sub,

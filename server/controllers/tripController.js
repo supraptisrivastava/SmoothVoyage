@@ -1,8 +1,8 @@
-  // controllers/tripController.js
+
 
   const Trip = require('../models/Trip');
 
-  // Create a new trip
+
   const createTrip = async (req, res) => {
     try {
         console.log("📥 Received trip data:", req.body);
@@ -10,15 +10,12 @@
         console.log("📥 Description received:", req.body.description);
         console.log("📥 Auth received:", req.user);
 
-        // const { user } = req.auth;
       const { tripName, destination, startDate, endDate, description, coordinates } = req.body;
 console.log("📥 Controller Received:", {
   tripName, destination, startDate, endDate, description, coordinates
 });
 
-      // if (!req.user || !req.user.sub) {
-      //   return res.status(401).json({ message: 'Unauthorized: No valid user' });
-      // }
+    
       const userId =  req.user?.sub;
 if (!userId) {
   return res.status(401).json({ message: 'Unauthorized: No valid user' });
@@ -45,14 +42,12 @@ console.log("📥 Received in controller:", req.body);
     }
   };
 
-  // Get all trips for the user
+
   const getTripsByUser = async (req, res) => {
     try {
-      // const trips = await Trip.find({ user: req.user.sub }).sort({ startDate: 1 });
-      // res.status(200).json(trips);
+     
       const trips = await Trip.find({ user: req.user.sub }).sort({ startDate: 1 });
 
-// ✅ Map tripName ➝ title for TripCard compatibility
 const formattedTrips = trips.map((trip) => ({
   ...trip._doc,
   title: trip.tripName,
@@ -66,7 +61,7 @@ res.status(200).json(formattedTrips);
     }
   };
 
-  // Get a single trip
+ 
   const getTripById = async (req, res) => {
     try {
       const trip = await Trip.findOne({ _id: req.params.id, user: req.user.sub });
@@ -78,28 +73,7 @@ res.status(200).json(formattedTrips);
       res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
   };
-  // const getTripById = async (req, res) => {
-  // const { id } = req.params;
 
-  // try {
-  //   const trip = await Trip.findById(id)
-  //     .populate('collaborators', 'email name') // Optional: to show collaborator info
-  //     .exec();
-
-  //   if (!trip) {
-  //     return res.status(404).json({ error: 'Trip not found' });
-  //   }
-
-    // Optionally: check if user is authorized to view this trip
-
-//     res.status(200).json(trip); // This now includes `pendingInvites`
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Server error' });
-//   }
-// };
-
-  // Update a trip
   const updateTrip = async (req, res) => {
     try {
       const updated = await Trip.findOneAndUpdate(
@@ -116,7 +90,7 @@ res.status(200).json(formattedTrips);
     }
   };
 
-  // Delete a trip
+
   const deleteTrip = async (req, res) => {
     try {
       const deleted = await Trip.findOneAndDelete({

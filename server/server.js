@@ -50,8 +50,8 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
-// ================== Gemini Chatbot Route ==================
-const MODEL = "gemini-2.0-flash"; // Or "gemini-2.0-pro" for better quality
+
+const MODEL = "gemini-2.0-flash"; 
 
 const SYSTEM_PROMPT = `
 You are SmoothVoyage Assistant, a friendly, helpful AI travel companion for the Smooth Voyage website.
@@ -64,7 +64,7 @@ app.post("/api/chat", async (req, res) => {
   try {
     const { messages = [] } = req.body;
 
-    // Convert incoming UI messages into Gemini format
+   
     const contents = messages.map(m => ({
       role: m.role === "user" ? "user" : "model",
       parts: [{ text: m.text }]
@@ -94,9 +94,7 @@ app.post("/api/chat", async (req, res) => {
     res.status(500).json({ error: "Error communicating with Gemini API" });
   }
 });
-// ==========================================================
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/trips', tripRoutes);
 
