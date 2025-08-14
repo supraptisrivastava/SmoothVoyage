@@ -1,79 +1,4 @@
-// // src/pages/TripDetails.jsx
-// import { useParams } from 'react-router-dom';
-// import { useAuth0 } from '@auth0/auth0-react';
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import Collaborators from '../components/Collaborators';
-// import MapSection from '../components/MapSection';
 
-// const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
-// const TripDetails = () => {
-//   const { id } = useParams();
-//   const { getAccessTokenSilently } = useAuth0();
-//   const [trip, setTrip] = useState(null);
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchTrip = async () => {
-//       try {
-//         const token = await getAccessTokenSilently();
-//         const res = await axios.get(`${API}/trips/${id}`, {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         });
-//         setTrip(res.data);
-//       } catch (err) {
-//         console.error('Error fetching trip details:', err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchTrip();
-//   }, [id, getAccessTokenSilently]);
-
-//   if (loading) return <div className="text-center py-20 text-white">Loading...</div>;
-//   if (!trip) return <div className="text-center py-20 text-red-500">Trip not found</div>;
-
-//   return (
-//     <div className="max-w-4xl mx-auto p-6 pt-24 text-white min-h-screen bg-[#0a0f2c]">
-//       <h2 className="text-3xl font-bold mb-4">{trip.title}</h2>
-//       <p className="mb-4">{trip.description}</p>
-//       <p className="mb-2">
-//         <strong>Destination:</strong> {trip.destination}
-//       </p>
-//       <p className="mb-2">
-//         <strong>Start:</strong> {new Date(trip.startDate).toLocaleDateString()}
-//       </p>
-//       <p className="mb-2">
-//         <strong>End:</strong> {new Date(trip.endDate).toLocaleDateString()}
-//       </p>
-
-//       {/* Collaborators Component */}
-//       <Collaborators collaborators={trip.collaborators} />
-
-//       {/* MapSection Component */}
-//       <div className="mt-6">
-//         <MapSection
-//   center={[trip.coordinates?.lat, trip.coordinates?.lng]}
-//   markers={[
-//     {
-//       id: 'trip',
-//       lat: trip.coordinates?.lat,
-//       lng: trip.coordinates?.lng,
-//       label: trip.destination,
-//     },
-//   ]}
-// />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default TripDetails;
-// src/pages/TripDetails.jsx
 import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
@@ -119,14 +44,13 @@ const TripDetails = () => {
   }
 }, [id, getAccessTokenSilently]);
 
-    // fetchTrip();
-  // }, [id, getAccessTokenSilently]);
+   
 
   if (loading) return <div className="text-center py-20 text-white">Loading...</div>;
   if (!trip) return <div className="text-center py-20 text-red-500">Trip not found</div>;
 
 
-  // const { tripName, destination, startDate, endDate, coordinates } = trip;
+  
   const {
   tripName,
   destination,
@@ -134,7 +58,7 @@ const TripDetails = () => {
   endDate,
   coordinates,
   description,
-  // collaborators = [],
+
 } = trip;
 
 
@@ -154,14 +78,9 @@ const TripDetails = () => {
         <strong>End:</strong> {new Date(endDate).toLocaleDateString()}
       </p>
 
-      {/* Collaborators Component */}
-      {/* <Collaborators collaborators={trip.collaborators || []} /> */}
       <Collaborators
   collaborators={trip.collaborators || []}
-  // onInvite={(email) => {
-  //   console.log("Invite sent to:", email);
-  //   // TOdo: POST to backend API to invite user by email
-  // }}
+ 
   onInvite={async (email) => {
   try {
     const token = await getAccessTokenSilently();
@@ -188,7 +107,7 @@ const TripDetails = () => {
 />
 
 
-      {/* MapSection Component */}
+   
       <div className="mt-6">
         {coordinates?.lat && coordinates?.lng ? (
           <MapSection

@@ -173,7 +173,7 @@ const Chatbot = () => {
 
     try {
       const res = await fetch("http://localhost:5000/api/chat", {
-        // If using proxy in package.json, change to "/api/chat"
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: newMessages }),
@@ -200,7 +200,7 @@ const Chatbot = () => {
     <div className="fixed bottom-5 right-5 flex flex-col items-end space-y-2">
       {open && (
         <div className="bg-white dark:bg-gray-800 border p-3 shadow-lg rounded-lg w-80 mb-2 flex flex-col">
-          {/* Header */}
+        
           <div className="flex justify-between items-center mb-2">
             <span className="text-lg font-semibold">Travel Bot</span>
             <button
@@ -212,7 +212,7 @@ const Chatbot = () => {
             </button>
           </div>
 
-          {/* Chat messages */}
+      
           <div className="h-48 overflow-auto border rounded-md p-2 mb-2 bg-gray-50 dark:bg-gray-700">
             {messages.map((msg, idx) => (
               <div
@@ -237,7 +237,7 @@ const Chatbot = () => {
             )}
           </div>
 
-          {/* Input box */}
+   
           <div className="flex space-x-2">
             <input
               type="text"
@@ -257,7 +257,7 @@ const Chatbot = () => {
         </div>
       )}
 
-      {/* Floating toggle button */}
+
       <button
         className="bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700"
         onClick={() => setOpen(!open)}

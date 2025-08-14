@@ -22,10 +22,9 @@ const Collaborators = ({ collaborators = [], onInvite }) => {
   const handleInvite = () => {
     if (!email.trim()) return;
 
-    // Call the invite handler passed from parent (or you can add logic here)
+   
     onInvite?.(email);
 
-    // Clear input
     setEmail("");
   };
 
@@ -40,15 +39,7 @@ const Collaborators = ({ collaborators = [], onInvite }) => {
       </ul>
 
       <div className="flex gap-2">
-        {/* <input
-          type="email"
-          value={email}
-          onChange={(e) => {
-            console.log("Typing:", e.target.value);
-            setEmail(e.target.value)}}
-          placeholder="Invite by email"
-          className="border rounded px-3 py-1 w-full"
-        /> */}
+       
         <input
   type="text"
   value={email}

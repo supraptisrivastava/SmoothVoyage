@@ -87,7 +87,7 @@ import TripCard from "../components/TripCard";
 import Spinner from "../components/Spinner";
 
 const Dashboard = () => {
-  const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0(); // ✅ only once
+  const { user, isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0(); 
   const API = import.meta.env.VITE_API_URL;
 
   const [trips, setTrips] = useState([]);
@@ -116,7 +116,7 @@ const Dashboard = () => {
     };
 
     fetchTrips();
-  }, [isAuthenticated, user?.email, getAccessTokenSilently, API]); // ✅ Stable dependencies
+  }, [isAuthenticated, user?.email, getAccessTokenSilently, API]); 
 
   if (isLoading || loading) {
     return <Spinner />;
