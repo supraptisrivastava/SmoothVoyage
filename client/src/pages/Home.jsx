@@ -4,16 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import ThemeToggle from '../components/ThemeToggle';
 import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
+import Crazy3DBackground from "../components/Crazy3DBackground";
 
 const Home = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
   const navigate = useNavigate();
 
   return (
+    
     <div
       className="min-h-screen bg-cover bg-center flex flex-col justify-between"
       style={{ backgroundImage: "url('https://source.unsplash.com/1600x900/?travel')" }}
     >
+      <Crazy3DBackground>
       <header className="flex justify-between items-center px-6 py-4 bg-black/50 text-white">
         <h1 className="text-3xl font-bold tracking-wide">✈️ Trip Planner</h1>
         <ThemeToggle />
@@ -52,6 +55,7 @@ const Home = () => {
         )}
       </main>
       <Chatbot />
+      </Crazy3DBackground>
     </div>
   );
 };
