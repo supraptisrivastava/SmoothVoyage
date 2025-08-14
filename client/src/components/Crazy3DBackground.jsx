@@ -215,20 +215,18 @@
 //     </div>
 //   );
 // }
-import React, { useMemo, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { Canvas, useFrame, extend } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
-// Noise function for s plane
-const NOISE_GLSL = `...`; // keep same as before
+const NOISE_GLSL = `...`; 
 
-// Shader material for background plane
 const WaveMaterial = shaderMaterial(
   { uTime: 0, uMouse: new THREE.Vector2(0, 0), uIntensity: 0.6, uColorA: new THREE.Color("#1e293b"), uColorB: new THREE.Color("#0f172a"), uLight: new THREE.Color("#22c55e") },
-  /* vertex shader */ `...`,
-  /* fragment shader */ `...`
+ `...`,
+   `...`
 );
 extend({ WaveMaterial });
 
@@ -243,7 +241,7 @@ function DistortedPlane({ mouse, intensity = 0.8 }) {
   return (
     <mesh rotation-x={-Math.PI / 2} position={[0, -1.2, 0]}>
       <planeGeometry args={[30, 30, 256, 256]} />
-      {/* @ts-ignore */}
+
       <waveMaterial ref={ref} transparent />
     </mesh>
   );
@@ -256,7 +254,7 @@ const { scene } = useGLTF('/airplane.glb');
   useFrame((state) => {
     if (group.current) {
       const t = state.clock.getElapsedTime();
-      group.current.rotation.y = t * 0.2; // slow rotation
+      group.current.rotation.y = t * 0.2; 
       group.current.rotation.x = Math.sin(t * 0.5) * 0.05;
        const mouseY = mouse.current.y;  
     group.current.position.y = (0.5 - mouseY) * 5;
@@ -299,7 +297,7 @@ export default function Crazy3DBackground({ children }) {
 
         <DistortedPlane mouse={mouse} intensity={pressed ? 1.2 : 0.8} />
 
-        {/* Replace shapes with airplane */}
+
         <Airplane mouse={mouse} />
 
         <fog attach="fog" args={["#0b1220", 10, 28]} />

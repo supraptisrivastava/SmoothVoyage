@@ -47,14 +47,7 @@ const PlaceSearch = ({ onSelect }) => {
     return () => clearTimeout(delayDebounce);
   }, [input]);
 
-  // const handleSelect = (place) => {
-  //   setInput(place.properties.name);
-  //   setSuggestions([]);
-  //   const { name, city, country } = place.properties;
-  //   const [lng, lat] = place.geometry.coordinates;
-  //   onSelect({ name, city, country, lat: parseFloat(lat),
-  //   lng: parseFloat(lng), });
-  // };
+
 
 const handleSelect = (place) => {
   const { name, city, country } = place.properties;

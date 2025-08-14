@@ -36,7 +36,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useEffect } from 'react';
 
-// Component to dynamically change the map center
+
 const ChangeMapCenter = ({ center }) => {
   const map = useMap();
   useEffect(() => {
@@ -48,7 +48,7 @@ const ChangeMapCenter = ({ center }) => {
 };
 
 const MapView = ({ location }) => {
-  // Accepts either lat/lng or lat/lon
+
   const lat = location?.lat ?? location?.latitude ?? 28.6139;
   const lng = location?.lng ?? location?.lon ?? location?.longitude ?? 77.2090;
 
