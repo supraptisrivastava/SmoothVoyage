@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const tripSchema = new mongoose.Schema({
  user: {
-  type: String,  // ✅ CORRECT: Auth0 `sub` is a string like "auth0|abc123"
+  type: String,  
   required: true,
 },
   tripName: {
@@ -34,7 +34,7 @@ const tripSchema = new mongoose.Schema({
 },
 collaborators: [
   {
-    type: String, // Auth0 `sub` values
+    type: String, 
     required: true,
   }
 ],

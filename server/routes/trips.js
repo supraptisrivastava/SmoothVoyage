@@ -1,4 +1,4 @@
-// routes/trips.js
+
 const express = require('express');
 const router = express.Router();
 const {
@@ -9,14 +9,10 @@ const {
   deleteTrip
 } = require('../controllers/tripController');
 const { authenticateUser } = require('../middlewares/authMiddleware');
-// throw new Error("🔥 trips.js definitely loaded");
-// console.log("✅ trip routes loaded");
 
-// Protect all trip routes
 router.use(authenticateUser);
 
 
-// Create a new trip
 router.post('/', createTrip);
 
 
@@ -40,19 +36,18 @@ router.post('/:id/invite',authenticateUser, async (req, res) => {
       return res.status(403).json({ error: 'You are not the trip owner' });
     }
 
-    // If user exists
+  
     const userToInvite = await User.findOne({ email });
     if (userToInvite) {
       if (trip.collaborators.includes(userToInvite._id)) {
         return res.status(400).json({ error: 'User already a collaborator' });
       }
 
-      // trip.collaborators.push(userToInvite._id);
-      // trip.collaborators.push(userToInvite.sub); // ✅ Add Auth0 ID string
-      trip.collaborators.push(userToInvite.auth0Id); // ✅ Correct: use `auth0Id` from your User model
+      
+      trip.collaborators.push(userToInvite.auth0Id); 
 
     } else {
-      // If user doesn't exist yet, add to pending invites
+      
       if (trip.pendingInvites?.includes(email)) {
         return res.status(400).json({ error: 'Email already invited' });
       }
@@ -67,22 +62,18 @@ router.post('/:id/invite',authenticateUser, async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 });
-// Get all trips for the authenticated user
+
 
 router.get('/', getTripsByUser);
 
-// Get single trip by ID
 router.get('/:id', getTripById);
 
-// Update a trip
 router.put('/:id', updateTrip);
 
-// Delete a trip
+
 router.delete('/:id', deleteTrip);
 
-// ...existing routes above...
 
-// Invite a collaborator to a trip
 
 
 module.exports = router;
