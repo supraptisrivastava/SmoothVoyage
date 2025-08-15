@@ -2,7 +2,7 @@
 const User = require('../models/User');
 
 
-export const handleAuth0Login = async (req, res) => {
+const handleAuth0Login = async (req, res) => {
   try {
     const { sub, name, email, picture } = req.user;
 
