@@ -286,7 +286,7 @@
 //   );
 // };
 
-// export default CreateTrip;
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -346,7 +346,7 @@ const CreateTrip = () => {
 
 
       const response = await axios.post(
-        
+
         `${import.meta.env.VITE_API_URL}/api/trips`,
    
         {
