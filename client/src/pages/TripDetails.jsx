@@ -91,11 +91,8 @@ const TripDetails = () => {
     console.log("Trip ID:", trip._id); 
 
     const res = await axios.post(
-<<<<<<< HEAD
+
      `${import.meta.env.VITE_API_URL}/api/trips/${id}/invite`,
-=======
-      `${API}/trips/${id}/invite`,
->>>>>>> 59614e24c87d51394adcd6e33a5e404fd3b89a5c
       { email },
       {
         headers: {
