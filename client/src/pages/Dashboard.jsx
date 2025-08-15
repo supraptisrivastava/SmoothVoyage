@@ -100,7 +100,7 @@ const Dashboard = () => {
       try {
         console.log("✅ API Base URL:", API);
         const token = await getAccessTokenSilently();
-        const response = await axios.get(`${API}/trips`, {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/trips`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
