@@ -1,4 +1,6 @@
-import User from '../models/User.js';
+// import User from '../models/User.js';
+const User = require('../models/User');
+
 
 export const handleAuth0Login = async (req, res) => {
   try {
