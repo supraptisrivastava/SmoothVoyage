@@ -39,3 +39,4 @@ export const handleAuth0Login = async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+module.exports = { handleAuth0Login };
