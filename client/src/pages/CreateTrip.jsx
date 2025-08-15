@@ -346,7 +346,11 @@ const CreateTrip = () => {
 
 
       const response = await axios.post(
+<<<<<<< HEAD
         `${import.meta.env.VITE_API_URL}/api/trips`,
+=======
+        'http://localhost:5000/api/trips',
+>>>>>>> 59614e24c87d51394adcd6e33a5e404fd3b89a5c
    
         {
           tripName: title,
