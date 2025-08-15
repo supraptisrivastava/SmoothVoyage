@@ -22,15 +22,11 @@ const TripDetails = () => {
         const token = await getAccessTokenSilently();
 
         console.log("Access Token:", token);
-<<<<<<< HEAD
+
         console.log(`GET ${import.meta.env.VITE_API_URL}/api/trips/${id}`);
 
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/trips/${id}`, {
-=======
-        console.log(`GET ${API}/trips/${id}`);
 
-        const res = await axios.get(`${API}/trips/${id}`, {
->>>>>>> 59614e24c87d51394adcd6e33a5e404fd3b89a5c
           headers: {
             Authorization: `Bearer ${token}`,
           },
