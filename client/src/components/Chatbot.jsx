@@ -172,11 +172,9 @@ const Chatbot = () => {
     setLoading(true);
 
     try {
-<<<<<<< HEAD
+
       const res = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
-=======
-      const res = await fetch("http://localhost:5000/api/chat", {
->>>>>>> 59614e24c87d51394adcd6e33a5e404fd3b89a5c
+
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
